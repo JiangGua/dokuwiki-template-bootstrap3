@@ -88,16 +88,14 @@ header('X-UA-Compatible: IE=edge,chrome=1');
               $content = bootstrap3_content(ob_get_clean());
               $toc     = bootstrap3_toc(true);
 
-              $toc_classes     = array();
-              $content_classes = array();
+              $toc_classes          = array();
+              $content_classes      = array();
+              $content_wrap_classes = array();
 
               if (bootstrap3_conf('tocCollapsed')) $content_classes[] = 'dw-toc-closed';
-              if (bootstrap3_conf('tocPosition'))  $toc_classes[]     = 'dw-toc-'. bootstrap3_conf('tocPosition');
 
               echo '<div class="dw-content '. implode(' ', $content_classes) .'">';
-
-              // Include the TOC layout
-              if ($toc) echo '<div class="dw-toc '. implode(' ', $toc_classes) .' hidden-print">' . $toc . '</div>';
+              echo '<div class="dw-toc hidden-print">' . $toc . '</div>';
               echo $content;
               echo '</div>';
 
